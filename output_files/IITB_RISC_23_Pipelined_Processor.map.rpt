@@ -1,0 +1,1286 @@
+Analysis & Synthesis report for IITB_RISC_23_Pipelined_Processor
+Thu May 04 04:00:33 2023
+Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis RAM Summary
+  9. Registers Removed During Synthesis
+ 10. Removed Registers Triggering Further Register Optimizations
+ 11. General Register Statistics
+ 12. Inverted Register Statistics
+ 13. Registers Packed Into Inferred Megafunctions
+ 14. Source assignments for pipeline_reg1:inst_pipeline_reg1|altshift_taps:p1_pc_out_rtl_0|shift_taps_vgl:auto_generated|altsyncram_jv21:altsyncram4
+ 15. Parameter Settings for Inferred Entity Instance: pipeline_reg1:inst_pipeline_reg1|altshift_taps:p1_pc_out_rtl_0
+ 16. altshift_taps Parameter Settings by Entity Instance
+ 17. Port Connectivity Checks: "pipeline_reg5:inst_pipeline_reg5"
+ 18. Port Connectivity Checks: "pipeline_reg4:inst_pipeline_reg4"
+ 19. Port Connectivity Checks: "pipeline_reg3:inst_pipeline_reg3"
+ 20. Port Connectivity Checks: "pipeline_reg2:inst_pipeline_reg2"
+ 21. Port Connectivity Checks: "pipeline_reg1:inst_pipeline_reg1"
+ 22. Port Connectivity Checks: "register_file:inst_register_file"
+ 23. Port Connectivity Checks: "carry_zero_flag:inst_carry_zero_flag"
+ 24. Port Connectivity Checks: "b_complement:inst_b_complement"
+ 25. Post-Synthesis Netlist Statistics for Top Partition
+ 26. Elapsed Time Per Partition
+ 27. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++------------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Thu May 04 04:00:33 2023       ;
+; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
+; Revision Name                      ; IITB_RISC_23_Pipelined_Processor            ;
+; Top-level Entity Name              ; IITB_RISC23                                 ;
+; Family                             ; MAX 10                                      ;
+; Total logic elements               ; 73                                          ;
+;     Total combinational functions  ; 43                                          ;
+;     Dedicated logic registers      ; 68                                          ;
+; Total registers                    ; 68                                          ;
+; Total pins                         ; 17                                          ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 9                                           ;
+; Embedded Multiplier 9-bit elements ; 0                                           ;
+; Total PLLs                         ; 0                                           ;
+; UFM blocks                         ; 0                                           ;
+; ADC blocks                         ; 0                                           ;
++------------------------------------+---------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                            ;
++------------------------------------------------------------------+--------------------+----------------------------------+
+; Option                                                           ; Setting            ; Default Value                    ;
++------------------------------------------------------------------+--------------------+----------------------------------+
+; Device                                                           ; 10M08DAF256C8G     ;                                  ;
+; Top-level entity name                                            ; IITB_RISC23        ; IITB_RISC_23_Pipelined_Processor ;
+; Family name                                                      ; MAX 10             ; Cyclone V                        ;
+; Maximum Number of Registers Created from Uninferred RAMs         ; 8192               ; -1 (Unlimited)                   ;
+; Use smart compilation                                            ; Off                ; Off                              ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                               ;
+; Enable compact report table                                      ; Off                ; Off                              ;
+; Restructure Multiplexers                                         ; Auto               ; Auto                             ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                              ;
+; Preserve fewer node names                                        ; On                 ; On                               ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable                           ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001                     ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993                        ;
+; State Machine Processing                                         ; Auto               ; Auto                             ;
+; Safe State Machine                                               ; Off                ; Off                              ;
+; Extract Verilog State Machines                                   ; On                 ; On                               ;
+; Extract VHDL State Machines                                      ; On                 ; On                               ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                              ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000                             ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                              ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                               ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                               ;
+; Parallel Synthesis                                               ; On                 ; On                               ;
+; DSP Block Balancing                                              ; Auto               ; Auto                             ;
+; NOT Gate Push-Back                                               ; On                 ; On                               ;
+; Power-Up Don't Care                                              ; On                 ; On                               ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                              ;
+; Remove Duplicate Registers                                       ; On                 ; On                               ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                              ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                              ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                              ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                              ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                              ;
+; Ignore SOFT Buffers                                              ; On                 ; On                               ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                              ;
+; Optimization Technique                                           ; Balanced           ; Balanced                         ;
+; Carry Chain Length                                               ; 70                 ; 70                               ;
+; Auto Carry Chains                                                ; On                 ; On                               ;
+; Auto Open-Drain Pins                                             ; On                 ; On                               ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                              ;
+; Auto ROM Replacement                                             ; On                 ; On                               ;
+; Auto RAM Replacement                                             ; On                 ; On                               ;
+; Auto DSP Block Replacement                                       ; On                 ; On                               ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto                             ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto                             ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                               ;
+; Strict RAM Replacement                                           ; Off                ; Off                              ;
+; Allow Synchronous Control Signals                                ; On                 ; On                               ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                              ;
+; Auto RAM Block Balancing                                         ; On                 ; On                               ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                              ;
+; Auto Resource Sharing                                            ; Off                ; Off                              ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                              ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                              ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                              ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                               ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                              ;
+; Timing-Driven Synthesis                                          ; On                 ; On                               ;
+; Report Parameter Settings                                        ; On                 ; On                               ;
+; Report Source Assignments                                        ; On                 ; On                               ;
+; Report Connectivity Checks                                       ; On                 ; On                               ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                              ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                                ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation               ;
+; HDL message level                                                ; Level2             ; Level2                           ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                              ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000                             ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000                             ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                              ;
+; Clock MUX Protection                                             ; On                 ; On                               ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                              ;
+; Block Design Naming                                              ; Auto               ; Auto                             ;
+; SDC constraint protection                                        ; Off                ; Off                              ;
+; Synthesis Effort                                                 ; Auto               ; Auto                             ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                               ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                              ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium                           ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto                             ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                               ;
++------------------------------------------------------------------+--------------------+----------------------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 16          ;
+; Maximum allowed            ; 16          ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 16          ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processors 2-16        ;   0.0%      ;
++----------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                         ;
++-------------------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path          ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                            ; Library ;
++-------------------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------------------------------+---------+
+; components/comparator.vhd                 ; yes             ; User VHDL File               ; C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/comparator.vhd                 ;         ;
+; components/adder.vhd                      ; yes             ; User VHDL File               ; C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/adder.vhd                      ;         ;
+; components/pipeline_reg/pipeline_reg5.vhd ; yes             ; User VHDL File               ; C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/pipeline_reg/pipeline_reg5.vhd ;         ;
+; components/pipeline_reg/pipeline_reg4.vhd ; yes             ; User VHDL File               ; C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/pipeline_reg/pipeline_reg4.vhd ;         ;
+; components/pipeline_reg/pipeline_reg3.vhd ; yes             ; User VHDL File               ; C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/pipeline_reg/pipeline_reg3.vhd ;         ;
+; components/pipeline_reg/pipeline_reg2.vhd ; yes             ; User VHDL File               ; C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/pipeline_reg/pipeline_reg2.vhd ;         ;
+; components/pipeline_reg/pipeline_reg1.vhd ; yes             ; User VHDL File               ; C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/pipeline_reg/pipeline_reg1.vhd ;         ;
+; components/se10.vhd                       ; yes             ; User VHDL File               ; C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/se10.vhd                       ;         ;
+; components/se7.vhd                        ; yes             ; User VHDL File               ; C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/se7.vhd                        ;         ;
+; components/register_file.vhd              ; yes             ; User VHDL File               ; C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/register_file.vhd              ;         ;
+; components/ir_memory.vhd                  ; yes             ; User VHDL File               ; C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/ir_memory.vhd                  ;         ;
+; components/ir_decoder.vhd                 ; yes             ; User VHDL File               ; C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/ir_decoder.vhd                 ;         ;
+; components/data_memory.vhd                ; yes             ; User VHDL File               ; C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/data_memory.vhd                ;         ;
+; components/carry_zero_flag.vhd            ; yes             ; User VHDL File               ; C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/carry_zero_flag.vhd            ;         ;
+; components/b_complement.vhd               ; yes             ; User VHDL File               ; C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/b_complement.vhd               ;         ;
+; components/alu.vhd                        ; yes             ; User VHDL File               ; C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/alu.vhd                        ;         ;
+; components/adderpc.vhd                    ; yes             ; User VHDL File               ; C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/adderpc.vhd                    ;         ;
+; IITB_RISC23.vhd                           ; yes             ; User VHDL File               ; C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd                           ;         ;
+; altshift_taps.tdf                         ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/altshift_taps.tdf                                ;         ;
+; altdpram.inc                              ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/altdpram.inc                                     ;         ;
+; lpm_counter.inc                           ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/lpm_counter.inc                                  ;         ;
+; lpm_compare.inc                           ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/lpm_compare.inc                                  ;         ;
+; lpm_constant.inc                          ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/lpm_constant.inc                                 ;         ;
+; db/shift_taps_vgl.tdf                     ; yes             ; Auto-Generated Megafunction  ; C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/db/shift_taps_vgl.tdf                     ;         ;
+; db/altsyncram_jv21.tdf                    ; yes             ; Auto-Generated Megafunction  ; C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/db/altsyncram_jv21.tdf                    ;         ;
+; db/add_sub_oed.tdf                        ; yes             ; Auto-Generated Megafunction  ; C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/db/add_sub_oed.tdf                        ;         ;
+; db/cntr_s3f.tdf                           ; yes             ; Auto-Generated Megafunction  ; C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/db/cntr_s3f.tdf                           ;         ;
+; db/cmpr_erb.tdf                           ; yes             ; Auto-Generated Megafunction  ; C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/db/cmpr_erb.tdf                           ;         ;
++-------------------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------------------------------+---------+
+
+
++---------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                         ;
++---------------------------------------------+-----------------------+
+; Resource                                    ; Usage                 ;
++---------------------------------------------+-----------------------+
+; Estimated Total logic elements              ; 73                    ;
+;                                             ;                       ;
+; Total combinational functions               ; 43                    ;
+; Logic element usage by number of LUT inputs ;                       ;
+;     -- 4 input functions                    ; 3                     ;
+;     -- 3 input functions                    ; 28                    ;
+;     -- <=2 input functions                  ; 12                    ;
+;                                             ;                       ;
+; Logic elements by mode                      ;                       ;
+;     -- normal mode                          ; 41                    ;
+;     -- arithmetic mode                      ; 2                     ;
+;                                             ;                       ;
+; Total registers                             ; 68                    ;
+;     -- Dedicated logic registers            ; 68                    ;
+;     -- I/O registers                        ; 0                     ;
+;                                             ;                       ;
+; I/O pins                                    ; 17                    ;
+; Total memory bits                           ; 9                     ;
+;                                             ;                       ;
+; Embedded Multiplier 9-bit elements          ; 0                     ;
+;                                             ;                       ;
+; Maximum fan-out node                        ; input_vector[0]~input ;
+; Maximum fan-out                             ; 71                    ;
+; Total fan-out                               ; 307                   ;
+; Average fan-out                             ; 2.07                  ;
++---------------------------------------------+-----------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                                                     ;
++-------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
+; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                                                                                                   ; Entity Name     ; Library Name ;
++-------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
+; |IITB_RISC23                              ; 43 (31)             ; 68 (1)                    ; 9           ; 0          ; 0            ; 0       ; 0         ; 17   ; 0            ; 0          ; |IITB_RISC23                                                                                                                          ; IITB_RISC23     ; work         ;
+;    |pipeline_reg1:inst_pipeline_reg1|     ; 7 (0)               ; 4 (0)                     ; 9           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |IITB_RISC23|pipeline_reg1:inst_pipeline_reg1                                                                                         ; pipeline_reg1   ; work         ;
+;       |altshift_taps:p1_pc_out_rtl_0|     ; 7 (0)               ; 4 (0)                     ; 9           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |IITB_RISC23|pipeline_reg1:inst_pipeline_reg1|altshift_taps:p1_pc_out_rtl_0                                                           ; altshift_taps   ; work         ;
+;          |shift_taps_vgl:auto_generated|  ; 7 (2)               ; 4 (2)                     ; 9           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |IITB_RISC23|pipeline_reg1:inst_pipeline_reg1|altshift_taps:p1_pc_out_rtl_0|shift_taps_vgl:auto_generated                             ; shift_taps_vgl  ; work         ;
+;             |altsyncram_jv21:altsyncram4| ; 0 (0)               ; 0 (0)                     ; 9           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |IITB_RISC23|pipeline_reg1:inst_pipeline_reg1|altshift_taps:p1_pc_out_rtl_0|shift_taps_vgl:auto_generated|altsyncram_jv21:altsyncram4 ; altsyncram_jv21 ; work         ;
+;             |cntr_s3f:cntr1|              ; 5 (5)               ; 2 (2)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |IITB_RISC23|pipeline_reg1:inst_pipeline_reg1|altshift_taps:p1_pc_out_rtl_0|shift_taps_vgl:auto_generated|cntr_s3f:cntr1              ; cntr_s3f        ; work         ;
+;    |pipeline_reg3:inst_pipeline_reg3|     ; 0 (0)               ; 15 (15)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |IITB_RISC23|pipeline_reg3:inst_pipeline_reg3                                                                                         ; pipeline_reg3   ; work         ;
+;    |pipeline_reg4:inst_pipeline_reg4|     ; 0 (0)               ; 15 (15)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |IITB_RISC23|pipeline_reg4:inst_pipeline_reg4                                                                                         ; pipeline_reg4   ; work         ;
+;    |pipeline_reg5:inst_pipeline_reg5|     ; 0 (0)               ; 18 (18)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |IITB_RISC23|pipeline_reg5:inst_pipeline_reg5                                                                                         ; pipeline_reg5   ; work         ;
+;    |register_file:inst_register_file|     ; 5 (5)               ; 15 (15)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |IITB_RISC23|register_file:inst_register_file                                                                                         ; register_file   ; work         ;
++-------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                                                        ;
++-------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------+
+; Name                                                                                                                                ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size ; MIF  ;
++-------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------+
+; pipeline_reg1:inst_pipeline_reg1|altshift_taps:p1_pc_out_rtl_0|shift_taps_vgl:auto_generated|altsyncram_jv21:altsyncram4|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 3            ; 22           ; 3            ; 22           ; 66   ; None ;
++-------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------+
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                       ;
++----------------------------------------------------------+---------------------------------------------------------------+
+; Register name                                            ; Reason for Removal                                            ;
++----------------------------------------------------------+---------------------------------------------------------------+
+; pipeline_reg2:inst_pipeline_reg2|p2_se10_out[6..15]      ; Stuck at GND due to stuck port data_in                        ;
+; pipeline_reg2:inst_pipeline_reg2|p2_se7_out[9..15]       ; Stuck at GND due to stuck port data_in                        ;
+; pipeline_reg3:inst_pipeline_reg3|p3_se10_out[6..15]      ; Stuck at GND due to stuck port data_in                        ;
+; pipeline_reg3:inst_pipeline_reg3|p3_se7_out[9..15]       ; Stuck at GND due to stuck port data_in                        ;
+; pipeline_reg4:inst_pipeline_reg4|p4_se10_out[6..15]      ; Stuck at GND due to stuck port data_in                        ;
+; pipeline_reg4:inst_pipeline_reg4|p4_se7_out[9..15]       ; Stuck at GND due to stuck port data_in                        ;
+; reg_en[1..6]                                             ; Merged with reg_en[7]                                         ;
+; pipeline_reg2:inst_pipeline_reg2|p2_se7_out[0]           ; Merged with pipeline_reg2:inst_pipeline_reg2|p2_se10_out[0]   ;
+; pipeline_reg2:inst_pipeline_reg2|p2_cz_out[0]            ; Merged with pipeline_reg2:inst_pipeline_reg2|p2_se10_out[0]   ;
+; pipeline_reg2:inst_pipeline_reg2|p2_se7_out[1]           ; Merged with pipeline_reg2:inst_pipeline_reg2|p2_se10_out[1]   ;
+; pipeline_reg2:inst_pipeline_reg2|p2_cz_out[1]            ; Merged with pipeline_reg2:inst_pipeline_reg2|p2_se10_out[1]   ;
+; pipeline_reg2:inst_pipeline_reg2|p2_se7_out[2]           ; Merged with pipeline_reg2:inst_pipeline_reg2|p2_se10_out[2]   ;
+; pipeline_reg2:inst_pipeline_reg2|p2_se7_out[3]           ; Merged with pipeline_reg2:inst_pipeline_reg2|p2_se10_out[3]   ;
+; pipeline_reg2:inst_pipeline_reg2|p2_se7_out[4]           ; Merged with pipeline_reg2:inst_pipeline_reg2|p2_se10_out[4]   ;
+; pipeline_reg2:inst_pipeline_reg2|p2_se7_out[5]           ; Merged with pipeline_reg2:inst_pipeline_reg2|p2_se10_out[5]   ;
+; pipeline_reg3:inst_pipeline_reg3|p3_se7_out[0]           ; Merged with pipeline_reg3:inst_pipeline_reg3|p3_se10_out[0]   ;
+; pipeline_reg3:inst_pipeline_reg3|p3_cz_out[0]            ; Merged with pipeline_reg3:inst_pipeline_reg3|p3_se10_out[0]   ;
+; pipeline_reg3:inst_pipeline_reg3|p3_se7_out[1]           ; Merged with pipeline_reg3:inst_pipeline_reg3|p3_se10_out[1]   ;
+; pipeline_reg3:inst_pipeline_reg3|p3_cz_out[1]            ; Merged with pipeline_reg3:inst_pipeline_reg3|p3_se10_out[1]   ;
+; pipeline_reg3:inst_pipeline_reg3|p3_se7_out[2]           ; Merged with pipeline_reg3:inst_pipeline_reg3|p3_se10_out[2]   ;
+; pipeline_reg3:inst_pipeline_reg3|p3_se7_out[3]           ; Merged with pipeline_reg3:inst_pipeline_reg3|p3_se10_out[3]   ;
+; pipeline_reg3:inst_pipeline_reg3|p3_se7_out[4]           ; Merged with pipeline_reg3:inst_pipeline_reg3|p3_se10_out[4]   ;
+; pipeline_reg3:inst_pipeline_reg3|p3_se7_out[5]           ; Merged with pipeline_reg3:inst_pipeline_reg3|p3_se10_out[5]   ;
+; pipeline_reg4:inst_pipeline_reg4|p4_se7_out[0]           ; Merged with pipeline_reg4:inst_pipeline_reg4|p4_se10_out[0]   ;
+; pipeline_reg4:inst_pipeline_reg4|p4_cz_out[0]            ; Merged with pipeline_reg4:inst_pipeline_reg4|p4_se10_out[0]   ;
+; pipeline_reg4:inst_pipeline_reg4|p4_se7_out[1]           ; Merged with pipeline_reg4:inst_pipeline_reg4|p4_se10_out[1]   ;
+; pipeline_reg4:inst_pipeline_reg4|p4_cz_out[1]            ; Merged with pipeline_reg4:inst_pipeline_reg4|p4_se10_out[1]   ;
+; pipeline_reg4:inst_pipeline_reg4|p4_se7_out[2]           ; Merged with pipeline_reg4:inst_pipeline_reg4|p4_se10_out[2]   ;
+; pipeline_reg4:inst_pipeline_reg4|p4_se7_out[3]           ; Merged with pipeline_reg4:inst_pipeline_reg4|p4_se10_out[3]   ;
+; pipeline_reg4:inst_pipeline_reg4|p4_se7_out[4]           ; Merged with pipeline_reg4:inst_pipeline_reg4|p4_se10_out[4]   ;
+; pipeline_reg4:inst_pipeline_reg4|p4_se7_out[5]           ; Merged with pipeline_reg4:inst_pipeline_reg4|p4_se10_out[5]   ;
+; pipeline_reg1:inst_pipeline_reg1|p1_ir_out[12]           ; Stuck at GND due to stuck port data_in                        ;
+; pipeline_reg1:inst_pipeline_reg1|p1_ir_out[3..11,13..15] ; Stuck at VCC due to stuck port data_in                        ;
+; pipeline_reg2:inst_pipeline_reg2|p2_opcode_out[0]        ; Stuck at GND due to stuck port data_in                        ;
+; pipeline_reg2:inst_pipeline_reg2|p2_opcode_out[1..3]     ; Stuck at VCC due to stuck port data_in                        ;
+; pipeline_reg2:inst_pipeline_reg2|p2_rb_out[0..2]         ; Stuck at VCC due to stuck port data_in                        ;
+; pipeline_reg2:inst_pipeline_reg2|p2_ra_out[0..2]         ; Stuck at VCC due to stuck port data_in                        ;
+; pipeline_reg2:inst_pipeline_reg2|p2_se7_out[6..8]        ; Stuck at VCC due to stuck port data_in                        ;
+; pipeline_reg2:inst_pipeline_reg2|p2_se10_out[3..5]       ; Stuck at VCC due to stuck port data_in                        ;
+; pipeline_reg3:inst_pipeline_reg3|p3_opcode_out[0]        ; Stuck at GND due to stuck port data_in                        ;
+; pipeline_reg3:inst_pipeline_reg3|p3_opcode_out[1..3]     ; Stuck at VCC due to stuck port data_in                        ;
+; pipeline_reg3:inst_pipeline_reg3|p3_rb_out[0..2]         ; Stuck at VCC due to stuck port data_in                        ;
+; pipeline_reg3:inst_pipeline_reg3|p3_ra_out[0..2]         ; Stuck at VCC due to stuck port data_in                        ;
+; pipeline_reg4:inst_pipeline_reg4|p4_rb_out[0..2]         ; Stuck at VCC due to stuck port data_in                        ;
+; pipeline_reg3:inst_pipeline_reg3|p3_se7_out[6..8]        ; Stuck at VCC due to stuck port data_in                        ;
+; pipeline_reg3:inst_pipeline_reg3|p3_se10_out[3..5]       ; Stuck at VCC due to stuck port data_in                        ;
+; register_file:inst_register_file|registers[0][15]        ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[1][15]        ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[2][15]        ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[3][15]        ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[4][15]        ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[5][15]        ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[6][15]        ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[0][14]        ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[1][14]        ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[2][14]        ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[3][14]        ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[4][14]        ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[5][14]        ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[6][14]        ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[0][13]        ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[1][13]        ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[2][13]        ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[3][13]        ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[4][13]        ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[5][13]        ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[6][13]        ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[0][12]        ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[1][12]        ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[2][12]        ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[3][12]        ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[4][12]        ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[5][12]        ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[6][12]        ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[0][11]        ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[1][11]        ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[2][11]        ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[3][11]        ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[4][11]        ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[5][11]        ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[6][11]        ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[0][10]        ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[1][10]        ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[2][10]        ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[3][10]        ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[4][10]        ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[5][10]        ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[6][10]        ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[0][9]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[1][9]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[2][9]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[3][9]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[4][9]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[5][9]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[6][9]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[0][8]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[1][8]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[2][8]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[3][8]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[4][8]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[5][8]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[6][8]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[0][7]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[1][7]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[2][7]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[3][7]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[4][7]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[5][7]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[6][7]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[0][6]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[1][6]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[2][6]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[3][6]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[4][6]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[5][6]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[6][6]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[0][5]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[1][5]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[2][5]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[3][5]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[4][5]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[5][5]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[6][5]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[0][4]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[1][4]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[2][4]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[3][4]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[4][4]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[5][4]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[6][4]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[0][3]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[1][3]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[2][3]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[3][3]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[4][3]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[5][3]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[6][3]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[0][2]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[1][2]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[2][2]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[3][2]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[4][2]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[5][2]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[6][2]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[0][1]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[1][1]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[2][1]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[3][1]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[4][1]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[5][1]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[6][1]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[0][0]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[1][0]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[2][0]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[3][0]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[4][0]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[5][0]         ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[6][0]         ; Lost fanout                                                   ;
+; pipeline_reg4:inst_pipeline_reg4|p4_opcode_out[0]        ; Stuck at GND due to stuck port data_in                        ;
+; pipeline_reg4:inst_pipeline_reg4|p4_opcode_out[1..3]     ; Stuck at VCC due to stuck port data_in                        ;
+; pipeline_reg4:inst_pipeline_reg4|p4_se10_out[3..5]       ; Stuck at VCC due to stuck port data_in                        ;
+; pipeline_reg4:inst_pipeline_reg4|p4_se7_out[6..8]        ; Stuck at VCC due to stuck port data_in                        ;
+; pipeline_reg5:inst_pipeline_reg5|p5_opcode_out[0]        ; Stuck at GND due to stuck port data_in                        ;
+; pipeline_reg5:inst_pipeline_reg5|p5_opcode_out[1..3]     ; Stuck at VCC due to stuck port data_in                        ;
+; carry_zero_flag:inst_carry_zero_flag|carry_flag          ; Stuck at GND due to stuck port clock_enable                   ;
+; carry_zero_flag:inst_carry_zero_flag|zero_flag           ; Stuck at GND due to stuck port clock_enable                   ;
+; pipeline_reg4:inst_pipeline_reg4|p4_se10_out[2]          ; Lost fanout                                                   ;
+; pipeline_reg4:inst_pipeline_reg4|p4_carry_flag_out       ; Stuck at GND due to stuck port data_in                        ;
+; pipeline_reg4:inst_pipeline_reg4|p4_zero_flag_out        ; Stuck at GND due to stuck port data_in                        ;
+; pipeline_reg4:inst_pipeline_reg4|p4_rf_d2_out[0..15]     ; Lost fanout                                                   ;
+; pipeline_reg5:inst_pipeline_reg5|p5_carry_flag_out       ; Stuck at GND due to stuck port data_in                        ;
+; pipeline_reg5:inst_pipeline_reg5|p5_zero_flag_out        ; Stuck at GND due to stuck port data_in                        ;
+; pipeline_reg5:inst_pipeline_reg5|p5_equal_to_flag_out    ; Lost fanout                                                   ;
+; pipeline_reg4:inst_pipeline_reg4|p4_equal_to_flag_out    ; Lost fanout                                                   ;
+; pipeline_reg5:inst_pipeline_reg5|p5_less_than_flag_out   ; Lost fanout                                                   ;
+; pipeline_reg4:inst_pipeline_reg4|p4_less_than_flag_out   ; Lost fanout                                                   ;
+; pipeline_reg5:inst_pipeline_reg5|p5_cz_out[0]            ; Lost fanout                                                   ;
+; pipeline_reg4:inst_pipeline_reg4|p4_se10_out[0]          ; Lost fanout                                                   ;
+; pipeline_reg5:inst_pipeline_reg5|p5_cz_out[1]            ; Lost fanout                                                   ;
+; pipeline_reg4:inst_pipeline_reg4|p4_se10_out[1]          ; Lost fanout                                                   ;
+; p5_enable                                                ; Stuck at VCC due to stuck port data_in                        ;
+; \register_enable_process:temp[0..31]                     ; Lost fanout                                                   ;
+; reg_en[7]                                                ; Merged with reg_en[0]                                         ;
+; pipeline_reg3:inst_pipeline_reg3|p3_rf_d1_out[0]         ; Merged with pipeline_reg3:inst_pipeline_reg3|p3_rf_d2_out[0]  ;
+; pipeline_reg3:inst_pipeline_reg3|p3_rf_d1_out[1]         ; Merged with pipeline_reg3:inst_pipeline_reg3|p3_rf_d2_out[1]  ;
+; pipeline_reg3:inst_pipeline_reg3|p3_rf_d1_out[2]         ; Merged with pipeline_reg3:inst_pipeline_reg3|p3_rf_d2_out[2]  ;
+; pipeline_reg3:inst_pipeline_reg3|p3_rf_d1_out[3]         ; Merged with pipeline_reg3:inst_pipeline_reg3|p3_rf_d2_out[3]  ;
+; pipeline_reg3:inst_pipeline_reg3|p3_rf_d1_out[4]         ; Merged with pipeline_reg3:inst_pipeline_reg3|p3_rf_d2_out[4]  ;
+; pipeline_reg3:inst_pipeline_reg3|p3_rf_d1_out[5]         ; Merged with pipeline_reg3:inst_pipeline_reg3|p3_rf_d2_out[5]  ;
+; pipeline_reg3:inst_pipeline_reg3|p3_rf_d1_out[6]         ; Merged with pipeline_reg3:inst_pipeline_reg3|p3_rf_d2_out[6]  ;
+; pipeline_reg3:inst_pipeline_reg3|p3_rf_d1_out[7]         ; Merged with pipeline_reg3:inst_pipeline_reg3|p3_rf_d2_out[7]  ;
+; pipeline_reg3:inst_pipeline_reg3|p3_rf_d1_out[8]         ; Merged with pipeline_reg3:inst_pipeline_reg3|p3_rf_d2_out[8]  ;
+; pipeline_reg3:inst_pipeline_reg3|p3_rf_d1_out[9]         ; Merged with pipeline_reg3:inst_pipeline_reg3|p3_rf_d2_out[9]  ;
+; pipeline_reg3:inst_pipeline_reg3|p3_rf_d1_out[10]        ; Merged with pipeline_reg3:inst_pipeline_reg3|p3_rf_d2_out[10] ;
+; pipeline_reg3:inst_pipeline_reg3|p3_rf_d1_out[11]        ; Merged with pipeline_reg3:inst_pipeline_reg3|p3_rf_d2_out[11] ;
+; pipeline_reg3:inst_pipeline_reg3|p3_rf_d1_out[12]        ; Merged with pipeline_reg3:inst_pipeline_reg3|p3_rf_d2_out[12] ;
+; pipeline_reg3:inst_pipeline_reg3|p3_rf_d1_out[13]        ; Merged with pipeline_reg3:inst_pipeline_reg3|p3_rf_d2_out[13] ;
+; pipeline_reg3:inst_pipeline_reg3|p3_rf_d1_out[14]        ; Merged with pipeline_reg3:inst_pipeline_reg3|p3_rf_d2_out[14] ;
+; pipeline_reg3:inst_pipeline_reg3|p3_rf_d1_out[15]        ; Merged with pipeline_reg3:inst_pipeline_reg3|p3_rf_d2_out[15] ;
+; pipeline_reg3:inst_pipeline_reg3|p3_rf_d2_out[15]        ; Lost fanout                                                   ;
+; register_file:inst_register_file|registers[7][15]        ; Lost fanout                                                   ;
+; pipeline_reg4:inst_pipeline_reg4|p4_alu_c_out[0]         ; Stuck at GND due to stuck port data_in                        ;
+; pipeline_reg5:inst_pipeline_reg5|p5_alu_c_out[0]         ; Stuck at GND due to stuck port data_in                        ;
+; register_file:inst_register_file|PC[0..15]               ; Lost fanout                                                   ;
+; Total Number of Removed Registers = 356                  ;                                                               ;
++----------------------------------------------------------+---------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                                      ;
++--------------------------------------------------+---------------------------+-----------------------------------------------------------------------------------+
+; Register name                                    ; Reason for Removal        ; Registers Removed due to This Register                                            ;
++--------------------------------------------------+---------------------------+-----------------------------------------------------------------------------------+
+; pipeline_reg1:inst_pipeline_reg1|p1_ir_out[12]   ; Stuck at GND              ; pipeline_reg2:inst_pipeline_reg2|p2_opcode_out[0],                                ;
+;                                                  ; due to stuck port data_in ; pipeline_reg2:inst_pipeline_reg2|p2_rb_out[2],                                    ;
+;                                                  ;                           ; pipeline_reg2:inst_pipeline_reg2|p2_rb_out[1],                                    ;
+;                                                  ;                           ; pipeline_reg2:inst_pipeline_reg2|p2_rb_out[0],                                    ;
+;                                                  ;                           ; pipeline_reg2:inst_pipeline_reg2|p2_ra_out[2],                                    ;
+;                                                  ;                           ; pipeline_reg2:inst_pipeline_reg2|p2_ra_out[1],                                    ;
+;                                                  ;                           ; pipeline_reg2:inst_pipeline_reg2|p2_ra_out[0],                                    ;
+;                                                  ;                           ; pipeline_reg3:inst_pipeline_reg3|p3_opcode_out[0],                                ;
+;                                                  ;                           ; pipeline_reg3:inst_pipeline_reg3|p3_rb_out[0],                                    ;
+;                                                  ;                           ; pipeline_reg3:inst_pipeline_reg3|p3_rb_out[1],                                    ;
+;                                                  ;                           ; pipeline_reg3:inst_pipeline_reg3|p3_rb_out[2],                                    ;
+;                                                  ;                           ; pipeline_reg3:inst_pipeline_reg3|p3_ra_out[0],                                    ;
+;                                                  ;                           ; pipeline_reg3:inst_pipeline_reg3|p3_ra_out[1],                                    ;
+;                                                  ;                           ; pipeline_reg3:inst_pipeline_reg3|p3_ra_out[2],                                    ;
+;                                                  ;                           ; pipeline_reg4:inst_pipeline_reg4|p4_rb_out[0],                                    ;
+;                                                  ;                           ; pipeline_reg4:inst_pipeline_reg4|p4_rb_out[1],                                    ;
+;                                                  ;                           ; pipeline_reg4:inst_pipeline_reg4|p4_rb_out[2],                                    ;
+;                                                  ;                           ; register_file:inst_register_file|registers[0][15],                                ;
+;                                                  ;                           ; register_file:inst_register_file|registers[1][15],                                ;
+;                                                  ;                           ; register_file:inst_register_file|registers[2][15],                                ;
+;                                                  ;                           ; register_file:inst_register_file|registers[3][15],                                ;
+;                                                  ;                           ; register_file:inst_register_file|registers[4][15],                                ;
+;                                                  ;                           ; register_file:inst_register_file|registers[5][15],                                ;
+;                                                  ;                           ; register_file:inst_register_file|registers[0][14],                                ;
+;                                                  ;                           ; register_file:inst_register_file|registers[1][14],                                ;
+;                                                  ;                           ; register_file:inst_register_file|registers[2][14],                                ;
+;                                                  ;                           ; register_file:inst_register_file|registers[3][14],                                ;
+;                                                  ;                           ; register_file:inst_register_file|registers[4][14],                                ;
+;                                                  ;                           ; register_file:inst_register_file|registers[5][14],                                ;
+;                                                  ;                           ; register_file:inst_register_file|registers[0][13],                                ;
+;                                                  ;                           ; register_file:inst_register_file|registers[1][13],                                ;
+;                                                  ;                           ; register_file:inst_register_file|registers[2][13],                                ;
+;                                                  ;                           ; register_file:inst_register_file|registers[3][13],                                ;
+;                                                  ;                           ; register_file:inst_register_file|registers[4][13],                                ;
+;                                                  ;                           ; register_file:inst_register_file|registers[5][13],                                ;
+;                                                  ;                           ; register_file:inst_register_file|registers[0][12],                                ;
+;                                                  ;                           ; register_file:inst_register_file|registers[1][12],                                ;
+;                                                  ;                           ; register_file:inst_register_file|registers[2][12],                                ;
+;                                                  ;                           ; register_file:inst_register_file|registers[3][12],                                ;
+;                                                  ;                           ; register_file:inst_register_file|registers[4][12],                                ;
+;                                                  ;                           ; register_file:inst_register_file|registers[5][12],                                ;
+;                                                  ;                           ; register_file:inst_register_file|registers[0][11],                                ;
+;                                                  ;                           ; register_file:inst_register_file|registers[1][11],                                ;
+;                                                  ;                           ; register_file:inst_register_file|registers[2][11],                                ;
+;                                                  ;                           ; register_file:inst_register_file|registers[3][11],                                ;
+;                                                  ;                           ; register_file:inst_register_file|registers[4][11],                                ;
+;                                                  ;                           ; register_file:inst_register_file|registers[5][11],                                ;
+;                                                  ;                           ; register_file:inst_register_file|registers[0][10],                                ;
+;                                                  ;                           ; register_file:inst_register_file|registers[1][10],                                ;
+;                                                  ;                           ; register_file:inst_register_file|registers[2][10],                                ;
+;                                                  ;                           ; register_file:inst_register_file|registers[3][10],                                ;
+;                                                  ;                           ; register_file:inst_register_file|registers[4][10],                                ;
+;                                                  ;                           ; register_file:inst_register_file|registers[5][10],                                ;
+;                                                  ;                           ; register_file:inst_register_file|registers[0][9],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[1][9],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[2][9],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[3][9],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[4][9],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[5][9],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[0][8],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[1][8],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[2][8],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[3][8],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[4][8],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[5][8],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[0][7],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[1][7],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[2][7],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[3][7],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[4][7],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[5][7],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[0][6],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[1][6],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[2][6],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[3][6],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[4][6],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[5][6],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[0][5],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[1][5],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[2][5],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[3][5],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[4][5],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[5][5],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[0][4],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[1][4],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[2][4],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[3][4],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[4][4],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[5][4],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[0][3],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[1][3],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[2][3],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[3][3],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[4][3],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[5][3],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[0][2],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[1][2],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[2][2],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[3][2],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[4][2],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[5][2],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[0][1],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[1][1],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[2][1],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[3][1],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[4][1],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[5][1],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[0][0],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[1][0],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[2][0],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[3][0],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[4][0],                                 ;
+;                                                  ;                           ; register_file:inst_register_file|registers[5][0],                                 ;
+;                                                  ;                           ; pipeline_reg4:inst_pipeline_reg4|p4_opcode_out[0],                                ;
+;                                                  ;                           ; pipeline_reg5:inst_pipeline_reg5|p5_opcode_out[0],                                ;
+;                                                  ;                           ; pipeline_reg4:inst_pipeline_reg4|p4_se10_out[2],                                  ;
+;                                                  ;                           ; pipeline_reg4:inst_pipeline_reg4|p4_rf_d2_out[2],                                 ;
+;                                                  ;                           ; pipeline_reg4:inst_pipeline_reg4|p4_rf_d2_out[3],                                 ;
+;                                                  ;                           ; pipeline_reg4:inst_pipeline_reg4|p4_rf_d2_out[4],                                 ;
+;                                                  ;                           ; pipeline_reg5:inst_pipeline_reg5|p5_equal_to_flag_out,                            ;
+;                                                  ;                           ; pipeline_reg4:inst_pipeline_reg4|p4_equal_to_flag_out,                            ;
+;                                                  ;                           ; pipeline_reg5:inst_pipeline_reg5|p5_less_than_flag_out,                           ;
+;                                                  ;                           ; pipeline_reg4:inst_pipeline_reg4|p4_less_than_flag_out,                           ;
+;                                                  ;                           ; pipeline_reg4:inst_pipeline_reg4|p4_se10_out[0],                                  ;
+;                                                  ;                           ; pipeline_reg4:inst_pipeline_reg4|p4_se10_out[1],                                  ;
+;                                                  ;                           ; pipeline_reg3:inst_pipeline_reg3|p3_rf_d2_out[15],                                ;
+;                                                  ;                           ; register_file:inst_register_file|PC[15], register_file:inst_register_file|PC[14], ;
+;                                                  ;                           ; register_file:inst_register_file|PC[13], register_file:inst_register_file|PC[12], ;
+;                                                  ;                           ; register_file:inst_register_file|PC[11], register_file:inst_register_file|PC[10], ;
+;                                                  ;                           ; register_file:inst_register_file|PC[9], register_file:inst_register_file|PC[8],   ;
+;                                                  ;                           ; register_file:inst_register_file|PC[7], register_file:inst_register_file|PC[6],   ;
+;                                                  ;                           ; register_file:inst_register_file|PC[5], register_file:inst_register_file|PC[4],   ;
+;                                                  ;                           ; register_file:inst_register_file|PC[3], register_file:inst_register_file|PC[2],   ;
+;                                                  ;                           ; register_file:inst_register_file|PC[1], register_file:inst_register_file|PC[0]    ;
+; pipeline_reg2:inst_pipeline_reg2|p2_se7_out[9]   ; Stuck at GND              ; pipeline_reg3:inst_pipeline_reg3|p3_se7_out[9],                                   ;
+;                                                  ; due to stuck port data_in ; pipeline_reg4:inst_pipeline_reg4|p4_se7_out[9],                                   ;
+;                                                  ;                           ; carry_zero_flag:inst_carry_zero_flag|carry_flag,                                  ;
+;                                                  ;                           ; carry_zero_flag:inst_carry_zero_flag|zero_flag,                                   ;
+;                                                  ;                           ; pipeline_reg4:inst_pipeline_reg4|p4_carry_flag_out,                               ;
+;                                                  ;                           ; pipeline_reg4:inst_pipeline_reg4|p4_zero_flag_out,                                ;
+;                                                  ;                           ; pipeline_reg4:inst_pipeline_reg4|p4_rf_d2_out[1],                                 ;
+;                                                  ;                           ; pipeline_reg5:inst_pipeline_reg5|p5_carry_flag_out,                               ;
+;                                                  ;                           ; pipeline_reg5:inst_pipeline_reg5|p5_zero_flag_out,                                ;
+;                                                  ;                           ; pipeline_reg5:inst_pipeline_reg5|p5_cz_out[0],                                    ;
+;                                                  ;                           ; pipeline_reg5:inst_pipeline_reg5|p5_cz_out[1]                                     ;
+; pipeline_reg1:inst_pipeline_reg1|p1_ir_out[13]   ; Stuck at VCC              ; pipeline_reg2:inst_pipeline_reg2|p2_opcode_out[1],                                ;
+;                                                  ; due to stuck port data_in ; pipeline_reg3:inst_pipeline_reg3|p3_opcode_out[1],                                ;
+;                                                  ;                           ; pipeline_reg4:inst_pipeline_reg4|p4_opcode_out[1],                                ;
+;                                                  ;                           ; pipeline_reg5:inst_pipeline_reg5|p5_opcode_out[1],                                ;
+;                                                  ;                           ; register_file:inst_register_file|registers[7][15]                                 ;
+; pipeline_reg1:inst_pipeline_reg1|p1_ir_out[14]   ; Stuck at VCC              ; pipeline_reg2:inst_pipeline_reg2|p2_opcode_out[2],                                ;
+;                                                  ; due to stuck port data_in ; pipeline_reg3:inst_pipeline_reg3|p3_opcode_out[2],                                ;
+;                                                  ;                           ; pipeline_reg4:inst_pipeline_reg4|p4_opcode_out[2],                                ;
+;                                                  ;                           ; pipeline_reg5:inst_pipeline_reg5|p5_opcode_out[2]                                 ;
+; pipeline_reg1:inst_pipeline_reg1|p1_ir_out[15]   ; Stuck at VCC              ; pipeline_reg2:inst_pipeline_reg2|p2_opcode_out[3],                                ;
+;                                                  ; due to stuck port data_in ; pipeline_reg3:inst_pipeline_reg3|p3_opcode_out[3],                                ;
+;                                                  ;                           ; pipeline_reg4:inst_pipeline_reg4|p4_opcode_out[3],                                ;
+;                                                  ;                           ; pipeline_reg5:inst_pipeline_reg5|p5_opcode_out[3]                                 ;
+; pipeline_reg2:inst_pipeline_reg2|p2_se10_out[6]  ; Stuck at GND              ; pipeline_reg3:inst_pipeline_reg3|p3_se10_out[6],                                  ;
+;                                                  ; due to stuck port data_in ; pipeline_reg4:inst_pipeline_reg4|p4_se10_out[6],                                  ;
+;                                                  ;                           ; pipeline_reg4:inst_pipeline_reg4|p4_rf_d2_out[0]                                  ;
+; pipeline_reg1:inst_pipeline_reg1|p1_ir_out[5]    ; Stuck at VCC              ; pipeline_reg2:inst_pipeline_reg2|p2_se10_out[5],                                  ;
+;                                                  ; due to stuck port data_in ; pipeline_reg3:inst_pipeline_reg3|p3_se10_out[5],                                  ;
+;                                                  ;                           ; pipeline_reg4:inst_pipeline_reg4|p4_se10_out[5]                                   ;
+; pipeline_reg1:inst_pipeline_reg1|p1_ir_out[8]    ; Stuck at VCC              ; pipeline_reg2:inst_pipeline_reg2|p2_se7_out[8],                                   ;
+;                                                  ; due to stuck port data_in ; pipeline_reg3:inst_pipeline_reg3|p3_se7_out[8],                                   ;
+;                                                  ;                           ; pipeline_reg4:inst_pipeline_reg4|p4_se7_out[8]                                    ;
+; pipeline_reg1:inst_pipeline_reg1|p1_ir_out[4]    ; Stuck at VCC              ; pipeline_reg2:inst_pipeline_reg2|p2_se10_out[4],                                  ;
+;                                                  ; due to stuck port data_in ; pipeline_reg3:inst_pipeline_reg3|p3_se10_out[4],                                  ;
+;                                                  ;                           ; pipeline_reg4:inst_pipeline_reg4|p4_se10_out[4]                                   ;
+; pipeline_reg1:inst_pipeline_reg1|p1_ir_out[7]    ; Stuck at VCC              ; pipeline_reg2:inst_pipeline_reg2|p2_se7_out[7],                                   ;
+;                                                  ; due to stuck port data_in ; pipeline_reg3:inst_pipeline_reg3|p3_se7_out[7],                                   ;
+;                                                  ;                           ; pipeline_reg4:inst_pipeline_reg4|p4_se7_out[7]                                    ;
+; pipeline_reg1:inst_pipeline_reg1|p1_ir_out[3]    ; Stuck at VCC              ; pipeline_reg2:inst_pipeline_reg2|p2_se10_out[3],                                  ;
+;                                                  ; due to stuck port data_in ; pipeline_reg3:inst_pipeline_reg3|p3_se10_out[3],                                  ;
+;                                                  ;                           ; pipeline_reg4:inst_pipeline_reg4|p4_se10_out[3]                                   ;
+; pipeline_reg1:inst_pipeline_reg1|p1_ir_out[6]    ; Stuck at VCC              ; pipeline_reg2:inst_pipeline_reg2|p2_se7_out[6],                                   ;
+;                                                  ; due to stuck port data_in ; pipeline_reg3:inst_pipeline_reg3|p3_se7_out[6],                                   ;
+;                                                  ;                           ; pipeline_reg4:inst_pipeline_reg4|p4_se7_out[6]                                    ;
+; pipeline_reg2:inst_pipeline_reg2|p2_se10_out[7]  ; Stuck at GND              ; pipeline_reg3:inst_pipeline_reg3|p3_se10_out[7],                                  ;
+;                                                  ; due to stuck port data_in ; pipeline_reg4:inst_pipeline_reg4|p4_se10_out[7]                                   ;
+; pipeline_reg2:inst_pipeline_reg2|p2_se10_out[8]  ; Stuck at GND              ; pipeline_reg3:inst_pipeline_reg3|p3_se10_out[8],                                  ;
+;                                                  ; due to stuck port data_in ; pipeline_reg4:inst_pipeline_reg4|p4_se10_out[8]                                   ;
+; pipeline_reg2:inst_pipeline_reg2|p2_se10_out[9]  ; Stuck at GND              ; pipeline_reg3:inst_pipeline_reg3|p3_se10_out[9],                                  ;
+;                                                  ; due to stuck port data_in ; pipeline_reg4:inst_pipeline_reg4|p4_se10_out[9]                                   ;
+; pipeline_reg2:inst_pipeline_reg2|p2_se10_out[10] ; Stuck at GND              ; pipeline_reg3:inst_pipeline_reg3|p3_se10_out[10],                                 ;
+;                                                  ; due to stuck port data_in ; pipeline_reg4:inst_pipeline_reg4|p4_se10_out[10]                                  ;
+; pipeline_reg2:inst_pipeline_reg2|p2_se10_out[11] ; Stuck at GND              ; pipeline_reg3:inst_pipeline_reg3|p3_se10_out[11],                                 ;
+;                                                  ; due to stuck port data_in ; pipeline_reg4:inst_pipeline_reg4|p4_se10_out[11]                                  ;
+; pipeline_reg2:inst_pipeline_reg2|p2_se10_out[12] ; Stuck at GND              ; pipeline_reg3:inst_pipeline_reg3|p3_se10_out[12],                                 ;
+;                                                  ; due to stuck port data_in ; pipeline_reg4:inst_pipeline_reg4|p4_se10_out[12]                                  ;
+; pipeline_reg2:inst_pipeline_reg2|p2_se10_out[13] ; Stuck at GND              ; pipeline_reg3:inst_pipeline_reg3|p3_se10_out[13],                                 ;
+;                                                  ; due to stuck port data_in ; pipeline_reg4:inst_pipeline_reg4|p4_se10_out[13]                                  ;
+; pipeline_reg2:inst_pipeline_reg2|p2_se10_out[14] ; Stuck at GND              ; pipeline_reg3:inst_pipeline_reg3|p3_se10_out[14],                                 ;
+;                                                  ; due to stuck port data_in ; pipeline_reg4:inst_pipeline_reg4|p4_se10_out[14]                                  ;
+; pipeline_reg2:inst_pipeline_reg2|p2_se10_out[15] ; Stuck at GND              ; pipeline_reg3:inst_pipeline_reg3|p3_se10_out[15],                                 ;
+;                                                  ; due to stuck port data_in ; pipeline_reg4:inst_pipeline_reg4|p4_se10_out[15]                                  ;
+; pipeline_reg2:inst_pipeline_reg2|p2_se7_out[10]  ; Stuck at GND              ; pipeline_reg3:inst_pipeline_reg3|p3_se7_out[10],                                  ;
+;                                                  ; due to stuck port data_in ; pipeline_reg4:inst_pipeline_reg4|p4_se7_out[10]                                   ;
+; pipeline_reg2:inst_pipeline_reg2|p2_se7_out[11]  ; Stuck at GND              ; pipeline_reg3:inst_pipeline_reg3|p3_se7_out[11],                                  ;
+;                                                  ; due to stuck port data_in ; pipeline_reg4:inst_pipeline_reg4|p4_se7_out[11]                                   ;
+; pipeline_reg2:inst_pipeline_reg2|p2_se7_out[12]  ; Stuck at GND              ; pipeline_reg3:inst_pipeline_reg3|p3_se7_out[12],                                  ;
+;                                                  ; due to stuck port data_in ; pipeline_reg4:inst_pipeline_reg4|p4_se7_out[12]                                   ;
+; pipeline_reg2:inst_pipeline_reg2|p2_se7_out[13]  ; Stuck at GND              ; pipeline_reg3:inst_pipeline_reg3|p3_se7_out[13],                                  ;
+;                                                  ; due to stuck port data_in ; pipeline_reg4:inst_pipeline_reg4|p4_se7_out[13]                                   ;
+; pipeline_reg2:inst_pipeline_reg2|p2_se7_out[14]  ; Stuck at GND              ; pipeline_reg3:inst_pipeline_reg3|p3_se7_out[14],                                  ;
+;                                                  ; due to stuck port data_in ; pipeline_reg4:inst_pipeline_reg4|p4_se7_out[14]                                   ;
+; pipeline_reg2:inst_pipeline_reg2|p2_se7_out[15]  ; Stuck at GND              ; pipeline_reg3:inst_pipeline_reg3|p3_se7_out[15],                                  ;
+;                                                  ; due to stuck port data_in ; pipeline_reg4:inst_pipeline_reg4|p4_se7_out[15]                                   ;
+; p5_enable                                        ; Stuck at VCC              ; pipeline_reg5:inst_pipeline_reg5|p5_alu_c_out[0]                                  ;
+;                                                  ; due to stuck port data_in ;                                                                                   ;
++--------------------------------------------------+---------------------------+-----------------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 68    ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 15    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-------------------------------------------------------------+
+; Inverted Register Statistics                                ;
++---------------------------------------------------+---------+
+; Inverted Register                                 ; Fan out ;
++---------------------------------------------------+---------+
+; reg_en[0]                                         ; 1       ;
+; register_file:inst_register_file|registers[7][0]  ; 1       ;
+; register_file:inst_register_file|registers[7][1]  ; 1       ;
+; register_file:inst_register_file|registers[7][2]  ; 1       ;
+; register_file:inst_register_file|registers[7][12] ; 1       ;
+; register_file:inst_register_file|registers[7][13] ; 1       ;
+; register_file:inst_register_file|registers[7][14] ; 1       ;
+; Total number of inverted registers = 7            ;         ;
++---------------------------------------------------+---------+
+
+
++--------------------------------------------------------------------------------------------------------------------+
+; Registers Packed Into Inferred Megafunctions                                                                       ;
++----------------------------------------------------+--------------------------------------------------+------------+
+; Register Name                                      ; Megafunction                                     ; Type       ;
++----------------------------------------------------+--------------------------------------------------+------------+
+; pipeline_reg3:inst_pipeline_reg3|p3_pc_out[0..15]  ; pipeline_reg1:inst_pipeline_reg1|p1_pc_out_rtl_0 ; SHIFT_TAPS ;
+; pipeline_reg2:inst_pipeline_reg2|p2_pc_out[0..15]  ; pipeline_reg1:inst_pipeline_reg1|p1_pc_out_rtl_0 ; SHIFT_TAPS ;
+; pipeline_reg1:inst_pipeline_reg1|p1_pc_out[0..15]  ; pipeline_reg1:inst_pipeline_reg1|p1_pc_out_rtl_0 ; SHIFT_TAPS ;
+; pipeline_reg4:inst_pipeline_reg4|p4_rc_out[0..2]   ; pipeline_reg1:inst_pipeline_reg1|p1_pc_out_rtl_0 ; SHIFT_TAPS ;
+; pipeline_reg3:inst_pipeline_reg3|p3_rc_out[0..2]   ; pipeline_reg1:inst_pipeline_reg1|p1_pc_out_rtl_0 ; SHIFT_TAPS ;
+; pipeline_reg2:inst_pipeline_reg2|p2_rc_out[0..2]   ; pipeline_reg1:inst_pipeline_reg1|p1_pc_out_rtl_0 ; SHIFT_TAPS ;
+; pipeline_reg3:inst_pipeline_reg3|p3_se10_out[0..2] ; pipeline_reg1:inst_pipeline_reg1|p1_pc_out_rtl_0 ; SHIFT_TAPS ;
+; pipeline_reg2:inst_pipeline_reg2|p2_se10_out[0..2] ; pipeline_reg1:inst_pipeline_reg1|p1_pc_out_rtl_0 ; SHIFT_TAPS ;
+; pipeline_reg1:inst_pipeline_reg1|p1_ir_out[0..2]   ; pipeline_reg1:inst_pipeline_reg1|p1_pc_out_rtl_0 ; SHIFT_TAPS ;
++----------------------------------------------------+--------------------------------------------------+------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------+
+; Source assignments for pipeline_reg1:inst_pipeline_reg1|altshift_taps:p1_pc_out_rtl_0|shift_taps_vgl:auto_generated|altsyncram_jv21:altsyncram4 ;
++---------------------------------+--------------------+------+-----------------------------------------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                                                ;
++---------------------------------+--------------------+------+-----------------------------------------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                                                 ;
++---------------------------------+--------------------+------+-----------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: pipeline_reg1:inst_pipeline_reg1|altshift_taps:p1_pc_out_rtl_0 ;
++----------------+----------------+-------------------------------------------------------------------------------+
+; Parameter Name ; Value          ; Type                                                                          ;
++----------------+----------------+-------------------------------------------------------------------------------+
+; WIDTH_BYTEENA  ; 1              ; Untyped                                                                       ;
+; NUMBER_OF_TAPS ; 1              ; Untyped                                                                       ;
+; TAP_DISTANCE   ; 3              ; Untyped                                                                       ;
+; WIDTH          ; 22             ; Untyped                                                                       ;
+; POWER_UP_STATE ; CLEARED        ; Untyped                                                                       ;
+; CBXI_PARAMETER ; shift_taps_vgl ; Untyped                                                                       ;
++----------------+----------------+-------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------+
+; altshift_taps Parameter Settings by Entity Instance                                         ;
++----------------------------+----------------------------------------------------------------+
+; Name                       ; Value                                                          ;
++----------------------------+----------------------------------------------------------------+
+; Number of entity instances ; 1                                                              ;
+; Entity Instance            ; pipeline_reg1:inst_pipeline_reg1|altshift_taps:p1_pc_out_rtl_0 ;
+;     -- NUMBER_OF_TAPS      ; 1                                                              ;
+;     -- TAP_DISTANCE        ; 3                                                              ;
+;     -- WIDTH               ; 22                                                             ;
++----------------------------+----------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "pipeline_reg5:inst_pipeline_reg5"                                                                 ;
++--------------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port               ; Type   ; Severity ; Details                                                                             ;
++--------------------+--------+----------+-------------------------------------------------------------------------------------+
+; p5_complement_out  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; p5_se7_out         ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; p5_se10_out        ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; p5_memory_data_out ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "pipeline_reg4:inst_pipeline_reg4"                                                        ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port      ; Type   ; Severity ; Details                                                                             ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; p4_ra_out ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; p4_en     ; Input  ; Info     ; Stuck at VCC                                                                        ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------+
+; Port Connectivity Checks: "pipeline_reg3:inst_pipeline_reg3" ;
++-------+-------+----------+-----------------------------------+
+; Port  ; Type  ; Severity ; Details                           ;
++-------+-------+----------+-----------------------------------+
+; p3_en ; Input ; Info     ; Stuck at VCC                      ;
++-------+-------+----------+-----------------------------------+
+
+
++--------------------------------------------------------------+
+; Port Connectivity Checks: "pipeline_reg2:inst_pipeline_reg2" ;
++-------+-------+----------+-----------------------------------+
+; Port  ; Type  ; Severity ; Details                           ;
++-------+-------+----------+-----------------------------------+
+; p2_en ; Input ; Info     ; Stuck at VCC                      ;
++-------+-------+----------+-----------------------------------+
+
+
++--------------------------------------------------------------+
+; Port Connectivity Checks: "pipeline_reg1:inst_pipeline_reg1" ;
++-------+-------+----------+-----------------------------------+
+; Port  ; Type  ; Severity ; Details                           ;
++-------+-------+----------+-----------------------------------+
+; p1_en ; Input ; Info     ; Stuck at VCC                      ;
++-------+-------+----------+-----------------------------------+
+
+
++--------------------------------------------------------------+
+; Port Connectivity Checks: "register_file:inst_register_file" ;
++-------+-------+----------+-----------------------------------+
+; Port  ; Type  ; Severity ; Details                           ;
++-------+-------+----------+-----------------------------------+
+; reset ; Input ; Info     ; Stuck at GND                      ;
++-------+-------+----------+-----------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "carry_zero_flag:inst_carry_zero_flag"                                                  ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; Port    ; Type   ; Severity ; Details                                                                             ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; zero_in ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; reset   ; Input  ; Info     ; Stuck at GND                                                                        ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "b_complement:inst_b_complement"                                                       ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                             ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; cmp_op ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 17                          ;
+; cycloneiii_ff         ; 68                          ;
+;     ENA               ; 15                          ;
+;     plain             ; 53                          ;
+; cycloneiii_lcell_comb ; 44                          ;
+;     arith             ; 2                           ;
+;         2 data inputs ; 2                           ;
+;     normal            ; 42                          ;
+;         0 data inputs ; 2                           ;
+;         1 data inputs ; 7                           ;
+;         2 data inputs ; 2                           ;
+;         3 data inputs ; 28                          ;
+;         4 data inputs ; 3                           ;
+; cycloneiii_ram_block  ; 3                           ;
+;                       ;                             ;
+; Max LUT depth         ; 2.20                        ;
+; Average LUT depth     ; 1.20                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:02     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+    Info: Copyright (C) 2020  Intel Corporation. All rights reserved.
+    Info: Your use of Intel Corporation's design tools, logic functions 
+    Info: and other software and tools, and any partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Intel Program License 
+    Info: Subscription Agreement, the Intel Quartus Prime License Agreement,
+    Info: the Intel FPGA IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Intel and sold by Intel or its authorized distributors.  Please
+    Info: refer to the applicable agreement for further details, at
+    Info: https://fpgasoftware.intel.com/eula.
+    Info: Processing started: Thu May 04 04:00:21 2023
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off IITB_RISC_23_Pipelined_Processor -c IITB_RISC_23_Pipelined_Processor
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file components/comparator.vhd
+    Info (12022): Found design unit 1: comparator-working File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/comparator.vhd Line: 15
+    Info (12023): Found entity 1: comparator File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/comparator.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file components/adder.vhd
+    Info (12022): Found design unit 1: adder-working File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/adder.vhd Line: 19
+    Info (12023): Found entity 1: adder File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/adder.vhd Line: 7
+Info (12021): Found 2 design units, including 1 entities, in source file testbench.vhd
+    Info (12022): Found design unit 1: Testbench-Behave File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/Testbench.vhd Line: 9
+    Info (12023): Found entity 1: Testbench File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/Testbench.vhd Line: 7
+Info (12021): Found 2 design units, including 1 entities, in source file components/pipeline_reg/pipeline_reg5.vhd
+    Info (12022): Found design unit 1: pipeline_reg5-working File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/pipeline_reg/pipeline_reg5.vhd Line: 43
+    Info (12023): Found entity 1: pipeline_reg5 File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/pipeline_reg/pipeline_reg5.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file components/pipeline_reg/pipeline_reg4.vhd
+    Info (12022): Found design unit 1: pipeline_reg4-working File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/pipeline_reg/pipeline_reg4.vhd Line: 46
+    Info (12023): Found entity 1: pipeline_reg4 File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/pipeline_reg/pipeline_reg4.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file components/pipeline_reg/pipeline_reg3.vhd
+    Info (12022): Found design unit 1: pipeline_reg3-working File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/pipeline_reg/pipeline_reg3.vhd Line: 41
+    Info (12023): Found entity 1: pipeline_reg3 File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/pipeline_reg/pipeline_reg3.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file components/pipeline_reg/pipeline_reg2.vhd
+    Info (12022): Found design unit 1: pipeline_reg2-working File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/pipeline_reg/pipeline_reg2.vhd Line: 38
+    Info (12023): Found entity 1: pipeline_reg2 File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/pipeline_reg/pipeline_reg2.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file components/pipeline_reg/pipeline_reg1.vhd
+    Info (12022): Found design unit 1: pipeline_reg1-working File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/pipeline_reg/pipeline_reg1.vhd Line: 29
+    Info (12023): Found entity 1: pipeline_reg1 File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/pipeline_reg/pipeline_reg1.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file components/se10.vhd
+    Info (12022): Found design unit 1: sign_10_extender-working File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/se10.vhd Line: 13
+    Info (12023): Found entity 1: sign_10_extender File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/se10.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file components/se7.vhd
+    Info (12022): Found design unit 1: sign_7_extender-working File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/se7.vhd Line: 13
+    Info (12023): Found entity 1: sign_7_extender File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/se7.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file components/register_file.vhd
+    Info (12022): Found design unit 1: register_file-working File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/register_file.vhd Line: 37
+    Info (12023): Found entity 1: register_file File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/register_file.vhd Line: 8
+Info (12021): Found 2 design units, including 1 entities, in source file components/ir_memory.vhd
+    Info (12022): Found design unit 1: ir_memory-working File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/ir_memory.vhd Line: 16
+    Info (12023): Found entity 1: ir_memory File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/ir_memory.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file components/ir_decoder.vhd
+    Info (12022): Found design unit 1: ir_decoder-working File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/ir_decoder.vhd Line: 23
+    Info (12023): Found entity 1: ir_decoder File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/ir_decoder.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file components/data_memory.vhd
+    Info (12022): Found design unit 1: data_memory-working File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/data_memory.vhd Line: 22
+    Info (12023): Found entity 1: data_memory File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/data_memory.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file components/carry_zero_flag.vhd
+    Info (12022): Found design unit 1: carry_zero_flag-working File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/carry_zero_flag.vhd Line: 27
+    Info (12023): Found entity 1: carry_zero_flag File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/carry_zero_flag.vhd Line: 7
+Info (12021): Found 2 design units, including 1 entities, in source file components/b_complement.vhd
+    Info (12022): Found design unit 1: b_complement-working File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/b_complement.vhd Line: 13
+    Info (12023): Found entity 1: b_complement File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/b_complement.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file components/alu.vhd
+    Info (12022): Found design unit 1: alu-working File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/alu.vhd Line: 27
+    Info (12023): Found entity 1: alu File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/alu.vhd Line: 7
+Info (12021): Found 2 design units, including 1 entities, in source file components/adderpc.vhd
+    Info (12022): Found design unit 1: adderpc-working File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/adderpc.vhd Line: 14
+    Info (12023): Found entity 1: adderpc File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/adderpc.vhd Line: 7
+Info (12021): Found 2 design units, including 1 entities, in source file iitb_risc23.vhd
+    Info (12022): Found design unit 1: IITB_RISC23-working File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 15
+    Info (12023): Found entity 1: IITB_RISC23 File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 7
+Info (12127): Elaborating entity "IITB_RISC23" for the top level hierarchy
+Warning (10036): Verilog HDL or VHDL warning at IITB_RISC23.vhd(383): object "p4_ra_output" assigned a value but never read File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 383
+Warning (10036): Verilog HDL or VHDL warning at IITB_RISC23.vhd(388): object "p5_complement_output" assigned a value but never read File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 388
+Warning (10036): Verilog HDL or VHDL warning at IITB_RISC23.vhd(391): object "p5_se7_output" assigned a value but never read File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 391
+Warning (10036): Verilog HDL or VHDL warning at IITB_RISC23.vhd(391): object "p5_se10_output" assigned a value but never read File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 391
+Warning (10036): Verilog HDL or VHDL warning at IITB_RISC23.vhd(407): object "complement_output" assigned a value but never read File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 407
+Warning (10036): Verilog HDL or VHDL warning at IITB_RISC23.vhd(411): object "p5_memory_data_output" assigned a value but never read File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 411
+Warning (10631): VHDL Process Statement warning at IITB_RISC23.vhd(938): inferring latch(es) for signal or variable "alu_ir_in", which holds its previous value in one or more paths through the process File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 938
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(950): signal "p3_cz_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 950
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(950): signal "carry_flag" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 950
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(955): signal "p3_cz_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 955
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(955): signal "zero_flag" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 955
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(961): signal "p3_cz_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 961
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(961): signal "carry_flag" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 961
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(966): signal "p3_cz_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 966
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(966): signal "zero_flag" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 966
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1050): signal "p4_opcode_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1050
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1051): signal "p4_rc_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1051
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1051): signal "p3_rb_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1051
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1052): signal "p5_aluc_in" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1052
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1054): signal "p3_rf_d2_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1054
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1056): signal "p4_opcode_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1056
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1057): signal "p4_rc_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1057
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1057): signal "p3_rb_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1057
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1058): signal "memory_data_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1058
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1060): signal "p3_rf_d2_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1060
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1062): signal "p4_opcode_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1062
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1063): signal "p4_rc_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1063
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1063): signal "p3_rb_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1063
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1064): signal "p5_aluc_in" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1064
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1066): signal "p3_rf_d2_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1066
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1068): signal "p4_opcode_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1068
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1069): signal "p4_rc_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1069
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1069): signal "p3_rb_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1069
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1070): signal "p3_pc_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1070
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1072): signal "p3_rf_d2_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1072
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1074): signal "p4_opcode_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1074
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1075): signal "p4_rc_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1075
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1075): signal "p3_pc_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1075
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1076): signal "p3_rb_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1076
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1078): signal "p3_rf_d2_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1078
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1080): signal "p4_opcode_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1080
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1081): signal "p4_rc_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1081
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1081): signal "p3_rb_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1081
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1082): signal "p3_pc_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1082
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1084): signal "p3_rf_d2_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1084
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1119): signal "p3_se10_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1119
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1121): signal "p3_se7_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1121
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1124): signal "p3_rf_d2_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1124
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1131): signal "carry_flag" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1131
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1137): signal "p3_se10_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1137
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1139): signal "p3_se7_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1139
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1149): signal "p4_se7_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1149
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1174): signal "p4_opcode_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1174
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1175): signal "p4_rc_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1175
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1175): signal "p3_ra_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1175
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1177): signal "p5_aluc_in" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1177
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1180): signal "p3_rf_d1_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1180
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1182): signal "p4_opcode_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1182
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1183): signal "p4_rc_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1183
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1183): signal "p3_ra_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1183
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1184): signal "p4_alu_c_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1184
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1186): signal "p3_rf_d1_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1186
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1188): signal "p4_opcode_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1188
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1189): signal "p4_rc_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1189
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1189): signal "p3_ra_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1189
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1190): signal "memory_data_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1190
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1192): signal "p3_rf_d1_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1192
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1194): signal "p4_opcode_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1194
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1195): signal "p4_rc_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1195
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1195): signal "p3_ra_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1195
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1196): signal "p4_alu_c_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1196
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1198): signal "p3_rf_d1_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1198
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1200): signal "p4_opcode_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1200
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1201): signal "p4_rc_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1201
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1201): signal "p3_ra_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1201
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1202): signal "memory_data_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1202
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1204): signal "p3_rf_d1_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1204
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1206): signal "p4_opcode_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1206
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1207): signal "p4_rb_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1207
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1207): signal "p3_ra_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1207
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1208): signal "memory_data_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1208
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1210): signal "p3_rf_d1_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1210
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1212): signal "p4_opcode_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1212
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1213): signal "p4_rc_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1213
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1213): signal "p3_ra_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1213
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1214): signal "p5_aluc_in" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1214
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1216): signal "p3_rf_d1_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1216
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1218): signal "p4_opcode_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1218
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1219): signal "p4_rc_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1219
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1219): signal "p3_ra_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1219
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1220): signal "p4_se10_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1220
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1222): signal "p3_rf_d1_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1222
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1224): signal "p4_opcode_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1224
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1226): signal "p4_opcode_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1226
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1228): signal "p4_rc_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1228
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1228): signal "p3_ra_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1228
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1229): signal "p5_aluc_in" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1229
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1231): signal "p3_rf_d1_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1231
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1233): signal "p4_opcode_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1233
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1234): signal "p4_rc_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1234
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1234): signal "p3_ra_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1234
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1235): signal "p3_pc_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1235
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1237): signal "p3_rf_d1_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1237
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1239): signal "p4_opcode_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1239
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1240): signal "p4_rc_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1240
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1240): signal "p3_ra_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1240
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1241): signal "p3_pc_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1241
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1243): signal "p3_rf_d1_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1243
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1245): signal "p4_opcode_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1245
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1246): signal "p4_rc_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1246
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1246): signal "p3_ra_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1246
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1247): signal "p3_pc_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1247
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1249): signal "p3_rf_d1_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1249
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1251): signal "p4_opcode_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1251
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1252): signal "p4_rc_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1252
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1252): signal "p3_ra_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1252
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1253): signal "p3_pc_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1253
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1255): signal "p3_rf_d1_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1255
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1257): signal "p4_opcode_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1257
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1258): signal "p4_rc_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1258
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1258): signal "p3_ra_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1258
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1259): signal "p3_pc_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1259
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1261): signal "p3_rf_d1_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1261
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1272): signal "p3_pc_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1272
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1276): signal "p3_rf_d1_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1276
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1282): signal "boot_flag" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1282
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1288): signal "p3_opcode_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1288
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1289): signal "equal_to_flag" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1289
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1290): signal "adder_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1290
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1292): signal "pc_input_from_adder" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1292
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1294): signal "p3_opcode_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1294
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1295): signal "less_than_flag" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1295
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1296): signal "adder_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1296
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1298): signal "pc_input_from_adder" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1298
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1300): signal "p3_opcode_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1300
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1301): signal "less_than_flag" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1301
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1301): signal "equal_to_flag" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1301
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1302): signal "adder_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1302
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1304): signal "pc_input_from_adder" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1304
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1306): signal "p3_opcode_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1306
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1306): signal "p5_enable" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1306
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1307): signal "adder_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1307
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1309): signal "pc_input_from_adder" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1309
+Warning (10631): VHDL Process Statement warning at IITB_RISC23.vhd(1280): inferring latch(es) for signal or variable "boot_flag", which holds its previous value in one or more paths through the process File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1280
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1325): signal "p4_opcode_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1325
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1325): signal "p3_opcode_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1325
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1326): signal "p4_rc_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1326
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1326): signal "p3_rb_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1326
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1327): signal "memory_data_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1327
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1329): signal "p3_rf_d2_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1329
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1331): signal "p4_opcode_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1331
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1331): signal "p3_opcode_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1331
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1332): signal "p4_rc_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1332
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1332): signal "p3_rb_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1332
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1333): signal "p4_alu_c_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1333
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1335): signal "p3_rf_d2_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1335
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1337): signal "p4_opcode_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1337
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1337): signal "p3_opcode_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1337
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1338): signal "p4_rc_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1338
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1338): signal "p3_rb_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1338
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1339): signal "p4_se7_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1339
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1341): signal "p3_rf_d2_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1341
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1344): signal "p3_rf_d2_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1344
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1373): signal "p4_opcode_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1373
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1373): signal "p3_opcode_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1373
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1374): signal "p4_rc_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1374
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1374): signal "p3_ra_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1374
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1375): signal "p5_aluc_in" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1375
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1377): signal "p3_rf_d1_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1377
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1379): signal "p4_opcode_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1379
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1379): signal "p3_opcode_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1379
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1380): signal "p4_rc_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1380
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1380): signal "p3_ra_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1380
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1381): signal "p4_se7_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1381
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1383): signal "p3_rf_d1_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1383
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1385): signal "p4_opcode_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1385
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1385): signal "p3_opcode_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1385
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1386): signal "p4_rc_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1386
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1386): signal "p3_ra_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1386
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1387): signal "memory_data_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1387
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1389): signal "p3_rf_d1_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1389
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1391): signal "p4_opcode_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1391
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1391): signal "p3_opcode_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1391
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1392): signal "p4_rc_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1392
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1392): signal "p3_ra_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1392
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1393): signal "p3_pc_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1393
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1395): signal "p3_rf_d1_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1395
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1398): signal "p3_rf_d1_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1398
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1404): signal "p4_opcode_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1404
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1404): signal "p3_opcode_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1404
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1405): signal "p4_rc_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1405
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1405): signal "p3_ra_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1405
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1406): signal "p5_aluc_in" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1406
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1408): signal "p3_rf_d2_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1408
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1410): signal "p4_opcode_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1410
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1410): signal "p3_opcode_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1410
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1411): signal "p4_rc_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1411
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1411): signal "p3_ra_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1411
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1412): signal "memory_data_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1412
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1414): signal "p3_rf_d2_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1414
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1417): signal "p3_rf_d2_output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1417
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1423): signal "reg_en" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1423
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1430): signal "reg_en" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1430
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1439): signal "reg_en" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1439
+Warning (10492): VHDL Process Statement warning at IITB_RISC23.vhd(1446): signal "reg_en" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1446
+Info (10041): Inferred latch for "boot_flag" at IITB_RISC23.vhd(1280) File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 1280
+Info (10041): Inferred latch for "alu_ir_in[0]" at IITB_RISC23.vhd(938) File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 938
+Info (12128): Elaborating entity "adderpc" for hierarchy "adderpc:inst_adderpc" File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 486
+Info (12128): Elaborating entity "alu" for hierarchy "alu:inst_alu" File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 493
+Info (12128): Elaborating entity "adder" for hierarchy "adder:inst_adder" File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 511
+Info (12128): Elaborating entity "comparator" for hierarchy "comparator:inst_comparator" File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 519
+Info (12128): Elaborating entity "b_complement" for hierarchy "b_complement:inst_b_complement" File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 526
+Info (12128): Elaborating entity "carry_zero_flag" for hierarchy "carry_zero_flag:inst_carry_zero_flag" File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 532
+Warning (10492): VHDL Process Statement warning at carry_zero_flag.vhd(33): signal "alu_op" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/carry_zero_flag.vhd Line: 33
+Info (12128): Elaborating entity "data_memory" for hierarchy "data_memory:inst_data_memory" File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 551
+Warning (10492): VHDL Process Statement warning at data_memory.vhd(40): signal "data_mem" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/data_memory.vhd Line: 40
+Info (12128): Elaborating entity "ir_memory" for hierarchy "ir_memory:inst_ir_memory" File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 567
+Warning (10492): VHDL Process Statement warning at ir_memory.vhd(25): signal "ir_mem" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/ir_memory.vhd Line: 25
+Info (12128): Elaborating entity "ir_decoder" for hierarchy "ir_decoder:inst_ir_decoder" File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 576
+Info (12128): Elaborating entity "register_file" for hierarchy "register_file:inst_register_file" File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 593
+Warning (10492): VHDL Process Statement warning at register_file.vhd(94): signal "reset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/register_file.vhd Line: 94
+Warning (10492): VHDL Process Statement warning at register_file.vhd(108): signal "PC" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/register_file.vhd Line: 108
+Warning (10492): VHDL Process Statement warning at register_file.vhd(110): signal "registers" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/register_file.vhd Line: 110
+Warning (10492): VHDL Process Statement warning at register_file.vhd(114): signal "PC" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/register_file.vhd Line: 114
+Warning (10492): VHDL Process Statement warning at register_file.vhd(116): signal "registers" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/register_file.vhd Line: 116
+Warning (10492): VHDL Process Statement warning at register_file.vhd(122): signal "reset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/register_file.vhd Line: 122
+Info (12128): Elaborating entity "sign_7_extender" for hierarchy "sign_7_extender:inst_se7" File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 621
+Info (12128): Elaborating entity "sign_10_extender" for hierarchy "sign_10_extender:inst_se10" File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 627
+Info (12128): Elaborating entity "pipeline_reg1" for hierarchy "pipeline_reg1:inst_pipeline_reg1" File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 634
+Info (12128): Elaborating entity "pipeline_reg2" for hierarchy "pipeline_reg2:inst_pipeline_reg2" File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 656
+Info (12128): Elaborating entity "pipeline_reg3" for hierarchy "pipeline_reg3:inst_pipeline_reg3" File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 688
+Info (12128): Elaborating entity "pipeline_reg4" for hierarchy "pipeline_reg4:inst_pipeline_reg4" File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 723
+Info (12128): Elaborating entity "pipeline_reg5" for hierarchy "pipeline_reg5:inst_pipeline_reg5" File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 764
+Info (276014): Found 2 instances of uninferred RAM logic
+    Info (276013): RAM logic "data_memory:inst_data_memory|data_mem" is uninferred because MIF is not supported for the selected family File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/data_memory.vhd Line: 25
+    Info (276013): RAM logic "ir_memory:inst_ir_memory|ir_mem" is uninferred because MIF is not supported for the selected family File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/components/ir_memory.vhd Line: 19
+Info (19000): Inferred 1 megafunctions from design logic
+    Info (276034): Inferred altshift_taps megafunction from the following design logic: "pipeline_reg1:inst_pipeline_reg1|p1_pc_out_rtl_0"
+        Info (286033): Parameter NUMBER_OF_TAPS set to 1
+        Info (286033): Parameter TAP_DISTANCE set to 3
+        Info (286033): Parameter WIDTH set to 22
+Info (12130): Elaborated megafunction instantiation "pipeline_reg1:inst_pipeline_reg1|altshift_taps:p1_pc_out_rtl_0"
+Info (12133): Instantiated megafunction "pipeline_reg1:inst_pipeline_reg1|altshift_taps:p1_pc_out_rtl_0" with the following parameter:
+    Info (12134): Parameter "NUMBER_OF_TAPS" = "1"
+    Info (12134): Parameter "TAP_DISTANCE" = "3"
+    Info (12134): Parameter "WIDTH" = "22"
+Info (12021): Found 1 design units, including 1 entities, in source file db/shift_taps_vgl.tdf
+    Info (12023): Found entity 1: shift_taps_vgl File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/db/shift_taps_vgl.tdf Line: 29
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_jv21.tdf
+    Info (12023): Found entity 1: altsyncram_jv21 File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/db/altsyncram_jv21.tdf Line: 28
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_oed.tdf
+    Info (12023): Found entity 1: add_sub_oed File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/db/add_sub_oed.tdf Line: 23
+Info (12021): Found 1 design units, including 1 entities, in source file db/cntr_s3f.tdf
+    Info (12023): Found entity 1: cntr_s3f File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/db/cntr_s3f.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/cmpr_erb.tdf
+    Info (12023): Found entity 1: cmpr_erb File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/db/cmpr_erb.tdf Line: 23
+Warning (14284): Synthesized away the following node(s):
+    Warning (14285): Synthesized away the following RAM node(s):
+        Warning (14320): Synthesized away node "pipeline_reg1:inst_pipeline_reg1|altshift_taps:p1_pc_out_rtl_0|shift_taps_vgl:auto_generated|altsyncram_jv21:altsyncram4|ram_block5a0" File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/db/altsyncram_jv21.tdf Line: 41
+        Warning (14320): Synthesized away node "pipeline_reg1:inst_pipeline_reg1|altshift_taps:p1_pc_out_rtl_0|shift_taps_vgl:auto_generated|altsyncram_jv21:altsyncram4|ram_block5a4" File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/db/altsyncram_jv21.tdf Line: 161
+        Warning (14320): Synthesized away node "pipeline_reg1:inst_pipeline_reg1|altshift_taps:p1_pc_out_rtl_0|shift_taps_vgl:auto_generated|altsyncram_jv21:altsyncram4|ram_block5a5" File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/db/altsyncram_jv21.tdf Line: 191
+        Warning (14320): Synthesized away node "pipeline_reg1:inst_pipeline_reg1|altshift_taps:p1_pc_out_rtl_0|shift_taps_vgl:auto_generated|altsyncram_jv21:altsyncram4|ram_block5a6" File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/db/altsyncram_jv21.tdf Line: 221
+        Warning (14320): Synthesized away node "pipeline_reg1:inst_pipeline_reg1|altshift_taps:p1_pc_out_rtl_0|shift_taps_vgl:auto_generated|altsyncram_jv21:altsyncram4|ram_block5a7" File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/db/altsyncram_jv21.tdf Line: 251
+        Warning (14320): Synthesized away node "pipeline_reg1:inst_pipeline_reg1|altshift_taps:p1_pc_out_rtl_0|shift_taps_vgl:auto_generated|altsyncram_jv21:altsyncram4|ram_block5a8" File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/db/altsyncram_jv21.tdf Line: 281
+        Warning (14320): Synthesized away node "pipeline_reg1:inst_pipeline_reg1|altshift_taps:p1_pc_out_rtl_0|shift_taps_vgl:auto_generated|altsyncram_jv21:altsyncram4|ram_block5a9" File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/db/altsyncram_jv21.tdf Line: 311
+        Warning (14320): Synthesized away node "pipeline_reg1:inst_pipeline_reg1|altshift_taps:p1_pc_out_rtl_0|shift_taps_vgl:auto_generated|altsyncram_jv21:altsyncram4|ram_block5a10" File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/db/altsyncram_jv21.tdf Line: 341
+        Warning (14320): Synthesized away node "pipeline_reg1:inst_pipeline_reg1|altshift_taps:p1_pc_out_rtl_0|shift_taps_vgl:auto_generated|altsyncram_jv21:altsyncram4|ram_block5a11" File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/db/altsyncram_jv21.tdf Line: 371
+        Warning (14320): Synthesized away node "pipeline_reg1:inst_pipeline_reg1|altshift_taps:p1_pc_out_rtl_0|shift_taps_vgl:auto_generated|altsyncram_jv21:altsyncram4|ram_block5a12" File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/db/altsyncram_jv21.tdf Line: 401
+        Warning (14320): Synthesized away node "pipeline_reg1:inst_pipeline_reg1|altshift_taps:p1_pc_out_rtl_0|shift_taps_vgl:auto_generated|altsyncram_jv21:altsyncram4|ram_block5a13" File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/db/altsyncram_jv21.tdf Line: 431
+        Warning (14320): Synthesized away node "pipeline_reg1:inst_pipeline_reg1|altshift_taps:p1_pc_out_rtl_0|shift_taps_vgl:auto_generated|altsyncram_jv21:altsyncram4|ram_block5a14" File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/db/altsyncram_jv21.tdf Line: 461
+        Warning (14320): Synthesized away node "pipeline_reg1:inst_pipeline_reg1|altshift_taps:p1_pc_out_rtl_0|shift_taps_vgl:auto_generated|altsyncram_jv21:altsyncram4|ram_block5a15" File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/db/altsyncram_jv21.tdf Line: 491
+        Warning (14320): Synthesized away node "pipeline_reg1:inst_pipeline_reg1|altshift_taps:p1_pc_out_rtl_0|shift_taps_vgl:auto_generated|altsyncram_jv21:altsyncram4|ram_block5a16" File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/db/altsyncram_jv21.tdf Line: 521
+        Warning (14320): Synthesized away node "pipeline_reg1:inst_pipeline_reg1|altshift_taps:p1_pc_out_rtl_0|shift_taps_vgl:auto_generated|altsyncram_jv21:altsyncram4|ram_block5a17" File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/db/altsyncram_jv21.tdf Line: 551
+        Warning (14320): Synthesized away node "pipeline_reg1:inst_pipeline_reg1|altshift_taps:p1_pc_out_rtl_0|shift_taps_vgl:auto_generated|altsyncram_jv21:altsyncram4|ram_block5a18" File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/db/altsyncram_jv21.tdf Line: 581
+        Warning (14320): Synthesized away node "pipeline_reg1:inst_pipeline_reg1|altshift_taps:p1_pc_out_rtl_0|shift_taps_vgl:auto_generated|altsyncram_jv21:altsyncram4|ram_block5a19" File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/db/altsyncram_jv21.tdf Line: 611
+        Warning (14320): Synthesized away node "pipeline_reg1:inst_pipeline_reg1|altshift_taps:p1_pc_out_rtl_0|shift_taps_vgl:auto_generated|altsyncram_jv21:altsyncram4|ram_block5a20" File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/db/altsyncram_jv21.tdf Line: 641
+        Warning (14320): Synthesized away node "pipeline_reg1:inst_pipeline_reg1|altshift_taps:p1_pc_out_rtl_0|shift_taps_vgl:auto_generated|altsyncram_jv21:altsyncram4|ram_block5a21" File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/db/altsyncram_jv21.tdf Line: 671
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "output_vector[0]" is stuck at GND File: C:/Users/HP/Desktop/IITB-CPU/IITB_RISC_23_Pipelined_Processor/IITB_RISC23.vhd Line: 11
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 187 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 93 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 1 input pins
+    Info (21059): Implemented 16 output pins
+    Info (21061): Implemented 73 logic cells
+    Info (21064): Implemented 3 RAM segments
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 238 warnings
+    Info: Peak virtual memory: 4925 megabytes
+    Info: Processing ended: Thu May 04 04:00:33 2023
+    Info: Elapsed time: 00:00:12
+    Info: Total CPU time (on all processors): 00:00:05
+
+

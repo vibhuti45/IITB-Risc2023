@@ -1,0 +1,1 @@
+set_global_assignment -name max_number_of_registers_from_uninferred_rams 8192

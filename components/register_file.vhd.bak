@@ -1,0 +1,84 @@
+-- Importing the std_logic library
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity register_file is
+    port(
+        -- 3 address-input line inputs
+        reg_a1 : in std_logic_vector(2 downto 0);
+        reg_a2 : in std_logic_vector(2 downto 0);
+        reg_a3 : in std_logic_vector(2 downto 0);
+
+        -- register write enable
+        reg_en : in std_logic_vector(7 downto 0);
+        
+        -- 1 data-input line input
+        reg_d3 : in std_logic_vector(15 downto 0);
+        
+        -- 2 data-output line output
+        reg_d1 : out std_logic_vector(15 downto 0);
+        reg_d2 : out std_logic_vector(15 downto 0);
+        
+        -- PC update
+        pc_in : in std_logic_vector(15 downto 0);
+        pc_out : out std_logic_vector(15 downto 0);
+        
+        -- clock 
+        clock  : in std_logic; -- clock
+
+        -- register reset
+        reset  : in std_logic
+    );
+end register_file;
+
+architecture working of register_file is
+    
+    -- 8 16bit-registers
+    type register_array is array (1 to 7 ) of std_logic_vector (15 downto 0);
+    signal registers: register_array :=(
+        x"0001", x"0003", x"0004",
+        x"0005",x"0006", x"0007", x"0000" 
+        );
+    signal PC : std_logic_vector (15 downto 0);
+    
+    begin
+
+    pc_read_process:process(clock)
+    begin
+        pc_out <= PC;
+    end process pc_read_process;
+
+    pc_write_process:process(clock)
+    begin
+        if (reset = '1') then
+            PC <= x"0000";
+        else
+            if (falling_edge(clock)) then
+                if (reg_en(0) = '1') then
+                    PC <= pc_in;
+                end if;
+            end if;
+        end if;
+    end process pc_write_process;
+
+    register_a1_a2_read_process:process(reg_a1, reg_a2)
+    begin
+        reg_d1 <= registers(to_integer(unsigned(reg_a1)));
+        reg_d2 <= registers(to_integer(unsigned(reg_a2)));
+    end process register_a1_a2_read_process;
+
+    register_a1_a2_write_process:process(clock)
+    begin
+        if (reset = '1') then
+            registers<= (others => x"0000");
+        else
+            if(falling_edge(clock)) then
+                if(reg_en(to_integer(unsigned(reg_a3))) = '1') then
+                    registers(to_integer(unsigned(reg_a3))) <= reg_d3;
+                end if;
+            end if;
+        end if;
+    end process register_a1_a2_write_process;
+
+end architecture working;

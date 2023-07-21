@@ -1,0 +1,63 @@
+library ieee; -- importing ieee library
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity ir_decoder is
+    port(
+        -- IR input
+        ir_in : in std_logic_vector(15 downto 0);
+
+        -- Decoded output
+        ir_op_opcode: out std_logic_vector(3 downto 0);
+        ir_op_ra: out std_logic_vector(2 downto 0);
+        ir_op_rb: out std_logic_vector(2 downto 0);
+        ir_op_rc: out std_logic_vector(2 downto 0);
+        ir_op_complement: out std_logic;
+        ir_op_carry_zero: out std_logic_vector(1 downto 0);
+
+        ir_op_imm6: out std_logic_vector(5 downto 0);
+        ir_op_imm9: out std_logic_vector(8 downto 0)
+    );
+end entity ir_decoder;
+
+architecture working of ir_decoder is
+    
+begin
+    
+    decode_ir_process:process(ir_in)
+    begin
+        ir_op_opcode    <= ir_in(15 downto 12);
+
+        ir_op_complement <= ir_in(2);
+        ir_op_carry_zero <= ir_in(1 downto 0);
+
+        ir_op_imm6        <= ir_in(5 downto 0);
+        ir_op_imm9        <= ir_in(8 downto 0);
+
+        if ir_in(15 downto 12) = "0000" then
+            ir_op_ra        <= ir_in(11 downto 9);
+            ir_op_rb        <= ir_in(5 downto 3);
+            ir_op_rc        <= ir_in(8 downto 6);
+        elsif ir_in(15 downto 12) = "0011" then
+            ir_op_rc        <= ir_in(11 downto 9);
+            ir_op_rb        <= ir_in(8 downto 6);
+            ir_op_ra        <= ir_in(5 downto 3);
+        elsif ir_in(15 downto 12) = "0100" then
+            ir_op_rc        <= ir_in(11 downto 9);
+            ir_op_ra        <= ir_in(8 downto 6);
+            ir_op_rb        <= ir_in(5 downto 3);
+        elsif ir_in(15 downto 12) = "0101" then
+            ir_op_rb        <= ir_in(11 downto 9);
+            ir_op_ra        <= ir_in(8 downto 6);
+            ir_op_rc        <= ir_in(5 downto 3);
+        elsif ir_in(15 downto 12) = "1000" then
+            ir_op_ra        <= ir_in(11 downto 9);
+            ir_op_rb        <= ir_in(5 downto 3);
+            ir_op_rc        <= "000"
+        else
+            ir_op_ra        <= ir_in(11 downto 9);
+            ir_op_rb        <= ir_in(8 downto 6);
+            ir_op_rc        <= ir_in(5 downto 3);
+        end if;
+    end process decode_ir_process;
+end architecture working;
